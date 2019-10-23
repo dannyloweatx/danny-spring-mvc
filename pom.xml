@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.dannysplayground</groupId>
+  <artifactId>danny-spring-mvc</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>danny-spring-mvc Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+  	<hibernate.version>5.3.0.CR1</hibernate.version>
+	<postgres.version>42.2.1</postgres.version>
+	<frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+	<node.version>v6.11.5</node.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+		<!-- spring dependency -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>5.0.5.RELEASE</version>
+		</dependency>
+		<!-- jstl dependency -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- javax servlet api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0-alpha-1</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.springframework.data</groupId>
+	        <artifactId>spring-data-jpa</artifactId>
+	        <version>2.0.5.RELEASE</version>
+	    </dependency>
+		<dependency>
+				<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>${postgres.version}</version>
+		    <scope>provided</scope>
+		</dependency>
+		<!-- log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+  </dependencies>
+  <build>
+    <finalName>danny-spring-mvc</finalName>
+    <plugins>
+   		<plugin>
+	        <groupId>com.github.eirslett</groupId>
+	        <artifactId>frontend-maven-plugin</artifactId>
+	        <version>${frontend-maven-plugin.version}</version>
+               <executions>
+                 <execution>
+                     <id>install node and npm</id>
+                     <goals>
+                         <goal>install-node-and-npm</goal>
+                     </goals>
+                     <phase>generate-resources</phase>
+                     <configuration>
+				        <nodeVersion>${node.version}</nodeVersion>
+				        <npmVersion>1.4.3</npmVersion>
+				    </configuration>
+				</execution>
+				 <execution>
+                     <id>npm install</id>
+                     <goals>
+                        <goal>npm</goal>
+                     </goals>
+                     <phase>generate-resources</phase>
+                </execution>
+   				<execution>
+				    <id>gulp-resources</id>
+				    <goals>
+				        <goal>gulp</goal>
+				    </goals>
+				    <phase>generate-resources</phase>
+				    <configuration>
+				        <arguments>copy-js-lib --target ${project.build.directory}${file.separator}${dp.warName} --no-color</arguments>
+				    </configuration>
+            	</execution>
+ 			</executions>
+        </plugin>
+	</plugins>
+  </build>
+</project>

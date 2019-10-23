@@ -1,0 +1,15 @@
+{
+  "name": "dannysplayground",
+  "version": "0.0.1",
+  "description": "Build tools for Danny's Playground",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.6.9",
+    "yargs": "^11.0.0",
+    "bower": "^1.7.9"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "private": true
+}
