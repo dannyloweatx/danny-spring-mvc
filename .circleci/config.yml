@@ -12,6 +12,7 @@ jobs:
             wget -O ~/cxcli.zip https://download.checkmarx.com/8.9.0/Plugins/CxConsolePlugin-8.90.0.zip
             unzip ~/cxcli.zip -d ~/cxcli
             chmod +x ~/cxcli/runCxConsole.sh
+            set
 
       - run:
           name: Execute CxSAST Scan
