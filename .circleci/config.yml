@@ -14,9 +14,9 @@ jobs:
             chmod +x ~/cxcli/runCxConsole.sh
 
       - run:
-          name: Execute CxSAST Scan
+          name: Execute CxSAST Scan (Async)
           command: |
-            ~/cxcli/runCxConsole.sh Scan \
+            ~/cxcli/runCxConsole.sh AsyncScan \
               -CxServer $CX_SERVER \
               -CxUser $CX_USER \
               -CxPassword $CX_PASSWORD \
