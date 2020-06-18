@@ -6,7 +6,7 @@
   "dependencies": {
     "angular": "^1.6.9",
     "yargs": "^11.0.0",
-    "bower": "^1.7.9"
+    "bower": "^1.8.8"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
